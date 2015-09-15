@@ -1,0 +1,17 @@
+{
+  "name": "forecast_dashboard",
+  "version": "0.0.0",
+  "authors": [
+    "Joanne Cheng <joanne@keen.io>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
