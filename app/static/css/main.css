@@ -1,0 +1,12 @@
+div.content {
+  margin-left: 4em;
+  margin-right: 4em;
+  max-width: 960px;
+}
+
+div.graph {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  height: 12em;
+  background-color: #E7E7F6;
+}
