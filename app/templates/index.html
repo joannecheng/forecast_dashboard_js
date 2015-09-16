@@ -79,35 +79,43 @@ const datasets = {
 
 const dpGraph = d3.select("svg#dew_point_graph");
 const height = dpGraph[0][0].clientHeight;
-const width = dpGraph[0][0].getBBox().width;
+const width = dpGraph[0][0].clientWidth;
 
 const quartileData = new ForecastDashboard.CalculateQuartiles(datasets).result();
+const xScale = d3.scale.linear()
+  .domain([0, quartileData.length])
+  .range([0, width])
+
 const yScale = d3.scale.linear()
-  .domain([0, 100])
+  .domain([20, 80])
   .range([height, 0])
 
 const lineGenerator = d3.svg.line()
-  .x(function(d, i) { return i * 20 })
+  .x(function(d, i) { return xScale(i); })
   .y(function(d) { return yScale(d); })
+
+const areaGenerator = d3.svg.area()
+  .x(function(d, i) { return xScale(i); })
+  .y0(function(d) { return yScale(d[0]); })
+  .y1(function(d) { return yScale(d[1]); })
 
 const linesContainer = dpGraph.append("g")
   .classed("lines", true)
+
+linesContainer
+  .append("path")
+  .attr("d", areaGenerator(_.map(quartileData, function(d) { return [d.min, d.max]; })))
+  .classed("range-graph-area", true);
+
+linesContainer
+  .append("path")
+  .attr("d", areaGenerator(_.map(quartileData, function(d) { return [d.quarterLow, d.quarterHigh] ; })))
+  .classed("middle-graph-area", true);
 
 const meanLine = linesContainer
   .append("path")
   .attr("d", lineGenerator(_.map(quartileData, function(d) { return d.mean; })))
   .classed("quartile-graph-line", true);
-
-const minLine = linesContainer
-  .append("path")
-  .attr("d", lineGenerator(_.map(quartileData, function(d) { return d.min; })))
-  .classed("quartile-graph-line", true);
-
-const maxLine= linesContainer
-  .append("path")
-  .attr("d", lineGenerator(_.map(quartileData, function(d) { return d.max; })))
-  .classed("quartile-graph-line", true);
-
       </script>
       <!-- end js -->
 

@@ -19,4 +19,13 @@ svg#dew_point_graph {
 .quartile-graph-line {
   fill: none;
   stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.range-graph-area {
+  fill: #cfcfcf;
+}
+
+.middle-graph-area {
+  fill: #afafaf;
 }
