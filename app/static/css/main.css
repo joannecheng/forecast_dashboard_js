@@ -10,3 +10,13 @@ div.graph {
   height: 12em;
   background-color: #f0f6fa;
 }
+
+svg#dew_point_graph {
+  height: 100%;
+  width: 100%;
+}
+
+.quartile-graph-line {
+  fill: none;
+  stroke: steelblue;
+}
