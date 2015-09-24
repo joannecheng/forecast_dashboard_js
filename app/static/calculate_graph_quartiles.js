@@ -1,9 +1,8 @@
 "use strict";
 // requires underscore
 
-let ForecastDashboard;
 if (typeof ForecastDashboard == "undefined") {
-  ForecastDashboard = {}
+  let ForecastDashboard = {}
 }
 
 class CalculateQuartiles {
@@ -36,12 +35,12 @@ class CalculateQuartiles {
   }
 
   _quartiles(dataByTimestamp) {
-    let compressedDataByTimestamp = _.reject(dataByTimestamp, function(data) {
-      return data.length <= 3;
-    })
+    let compressedDataByTimestamp = _.object(_.filter(_.pairs(dataByTimestamp, function(data, timestamp) {
+      return data.length > 2;
+    })));
     return _.map(compressedDataByTimestamp, (data, timestamp) => {
       return {
-        timestamp: parseInt(timestamp),
+        timestamp: new Date(parseInt(timestamp)),
         mean: this._mean(data),
         quarterLow: this._quarterLow(data),
         quarterHigh: this._quarterHigh(data),

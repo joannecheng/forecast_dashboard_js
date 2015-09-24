@@ -5,20 +5,35 @@ div.content {
 }
 
 div.graph {
-  margin-top: 2em;
-  margin-bottom: 2em;
-  height: 12em;
-  background-color: #f0f6fa;
+  margin-top: 0;
+  margin-bottom: 1em;
+  height: 10em;
+  background-color: #fff;
 }
 
-svg#dew_point_graph {
+svg.graph {
   height: 100%;
   width: 100%;
 }
 
+h3.graph-title {
+  line-height: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.axis path {
+  fill: none;
+  stroke: black;
+}
+
+.axis text {
+  font-size: 0.65em;
+}
+
 .quartile-graph-line {
   fill: none;
-  stroke: steelblue;
+  stroke: black;
   stroke-width: 2px;
 }
 
