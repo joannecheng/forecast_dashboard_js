@@ -95,7 +95,7 @@ class QuartileGraph {
 
   _yScale() {
     let min = null;
-    if (typeof this.yMin === "undefined") {
+    if (this.yMin === null) {
       min = d3.min(this.data, function(d) { return d.min }) - 5;
     }
     else {
